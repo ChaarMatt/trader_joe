@@ -1,0 +1,68 @@
+# Trader Joe Configuration Example
+
+# API Keys (required)
+api_keys:
+  newsapi: "YOUR_NEWSAPI_KEY"        # Required: For NewsAPI integration (get from https://newsapi.org/)
+  finnhub: "YOUR_FINNHUB_KEY"        # Required: For real-time market data (get from https://finnhub.io/)
+  alpha_vantage: "YOUR_ALPHAVANTAGE_KEY"  # Optional: For additional market data
+  iex_cloud: ""      # Optional: For additional market data
+
+# News Sources
+news_sources:
+  - name: "Yahoo Finance"
+    url: "https://finance.yahoo.com/"
+    priority: 2
+  - name: "NewsAPI"
+    url: "https://newsapi.org/"
+    priority: 1
+
+# Database Configuration
+database:
+  path: "data/trader_joe.db"
+  type: "sqlite"
+
+# Trading Parameters
+trading:
+  sentiment_threshold: 0.5      # Minimum sentiment score to consider
+  max_recommendations: 5        # Maximum number of recommendations to generate
+  confidence_threshold: 0.7     # Minimum confidence for recommendations
+  min_sentiment_score: 0.6      # Minimum sentiment score for recommendations
+  news_relevance_window_hours: 24  # How long to consider news relevant
+  update_interval_seconds: 300  # How often to update recommendations
+  source_weights:
+    "Yahoo Finance": 1.0
+    "NewsAPI": 1.0
+
+# Technical Analysis
+technical_analysis:
+  indicators:
+    sma:
+      length: 20    # Simple Moving Average period
+    rsi:
+      length: 14    # Relative Strength Index period
+    macd:
+      fast: 12      # MACD fast period
+      slow: 26      # MACD slow period
+      signal: 9     # MACD signal line period
+  data_sources:
+    - name: "yfinance"
+      priority: 1
+  cache_duration: 300  # Cache duration in seconds
+
+# Web Interface
+web:
+  host: "localhost"
+  port: 5000
+  debug: false
+  chart_update_interval: 60  # Seconds between chart updates
+  max_displayed_news: 20     # Maximum number of news articles to display
+  session_timeout: 3600      # Session timeout in seconds
+  update_interval: 300       # Data update interval in seconds
+
+# Logging
+logging:
+  level: "INFO"                 # Logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+  file: "logs/trader_joe.log"   # Log file path
+  max_size: 1048576            # Maximum log file size in bytes (1MB)
+  backup_count: 3              # Number of backup log files to keep
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"  # Log format

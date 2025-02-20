@@ -1,0 +1,68 @@
+# Trader Joe Configuration
+
+# API Keys (required)
+api_keys:
+  newsapi: "dfc62c91456f4d8cb90c901be69ec4cb"        # Required: For NewsAPI integration
+  finnhub: "cuqj4j9r01qsd02ekct0cuqj4j9r01qsd02ekctg"        # Required: For real-time market data
+  alpha_vantage: "KJOQ3IEBPH77HJUR"  # Optional: For additional market data
+  iex_cloud: ""      # Optional: For additional market data
+
+# News Sources
+news_sources:
+  - name: "Yahoo Finance"
+    url: "https://finance.yahoo.com/"
+    priority: 2
+  - name: "NewsAPI"
+    url: "https://newsapi.org/"
+    priority: 1
+
+# Database Configuration
+database:
+  path: "data/trader_joe.db"
+  type: "sqlite"
+
+# Trading Parameters
+trading:
+  sentiment_threshold: 0.5
+  max_recommendations: 5
+  confidence_threshold: 0.7
+  min_sentiment_score: 0.6
+  news_relevance_window_hours: 24
+  update_interval_seconds: 300  # How often to update recommendations
+  source_weights:
+    "Yahoo Finance": 1.0
+    "NewsAPI": 1.0
+
+# Technical Analysis
+technical_analysis:
+  indicators:
+    sma:
+      length: 20
+    rsi:
+      length: 14
+    macd:
+      fast: 12
+      slow: 26
+      signal: 9
+  data_sources:
+    - name: "yfinance"
+      priority: 1
+  cache_duration: 300
+
+# Web Interface
+web:
+  host: "localhost"
+  port: 5000
+  debug: false
+  chart_update_interval: 60  # Seconds between chart updates
+  max_displayed_news: 20
+  session_timeout: 3600
+  update_interval: 300  # Seconds between data updates
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/trader_joe.log"
+  max_size: 1048576
+  backup_count: 3
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
