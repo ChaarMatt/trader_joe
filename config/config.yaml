@@ -2,9 +2,9 @@
 
 # API Keys (required)
 api_keys:
-  newsapi: "dfc62c91456f4d8cb90c901be69ec4cb"        # Required: For NewsAPI integration
-  finnhub: "cuqj4j9r01qsd02ekct0cuqj4j9r01qsd02ekctg"        # Required: For real-time market data
-  alpha_vantage: "KJOQ3IEBPH77HJUR"  # Optional: For additional market data
+  newsapi: ""        # Required: For NewsAPI integration
+  finnhub: ""        # Required: For real-time market data
+  alpha_vantage: ""  # Optional: For additional market data
   iex_cloud: ""      # Optional: For additional market data
 
 # News Sources
